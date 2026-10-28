@@ -140,8 +140,5 @@ Para fortalecer a apresentação da atividade, recomenda-se incluir capturas de 
 
 ### Conclusão da atividade
 
-A utilização do Accessibility Scanner MCP contribuiu para tornar o desenvolvimento da landing page Lumina mais orientado por evidências. A ferramenta ajudou a identificar problemas de acessibilidade, direcionar melhorias e verificar parte dos resultados após as alterações. A atividade demonstrou a aplicação prática de uma ferramenta integrada ao desenvolvimento e a importância de combinar auditorias automatizadas com testes manuais para obter uma avaliação mais completa da qualidade e da acessibilidade da interface.
-
-
-
+A utilização do Accessibility Scanner MCP contribuiu para tornar o desenvolvimento da landing page Lumora mais orientado por evidências. A ferramenta ajudou a identificar problemas de acessibilidade, direcionar melhorias e verificar parte dos resultados após as alterações. A atividade demonstrou a aplicação prática de uma ferramenta integrada ao desenvolvimento e a importância de combinar auditorias automatizadas com testes manuais para obter uma avaliação mais completa da qualidade e da acessibilidade da interface.
 
