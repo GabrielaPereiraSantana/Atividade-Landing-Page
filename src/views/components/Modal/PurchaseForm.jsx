@@ -51,6 +51,7 @@ export function PurchaseForm({
           type="button"
           className={styles.changePlan}
           onClick={onClose}
+          aria-label="Alterar plano selecionado"
         >
           Alterar plano
         </button>
@@ -74,6 +75,7 @@ export function PurchaseForm({
           autoComplete="name"
           aria-invalid={errors.name ? 'true' : 'false'}
           aria-describedby={errors.name ? 'name-error' : undefined}
+          aria-required="true"
           disabled={submitStatus === 'submitting'}
         />
         {errors.name && (
@@ -99,6 +101,7 @@ export function PurchaseForm({
           autoComplete="email"
           aria-invalid={errors.email ? 'true' : 'false'}
           aria-describedby={errors.email ? 'email-error' : undefined}
+          aria-required="true"
           disabled={submitStatus === 'submitting'}
         />
         {errors.email && (
@@ -124,6 +127,7 @@ export function PurchaseForm({
           autoComplete="tel"
           aria-invalid={errors.phone ? 'true' : 'false'}
           aria-describedby={errors.phone ? 'phone-error' : undefined}
+          aria-required="true"
           disabled={submitStatus === 'submitting'}
         />
         {errors.phone && (
@@ -152,23 +156,24 @@ export function PurchaseForm({
       </div>
 
       <div className={styles.submitArea}>
-        <button
-          type="submit"
-          className={`${styles.submitBtn} ${submitStatus === 'submitting' ? styles.loading : ''}`}
-          disabled={submitStatus === 'submitting' || submitStatus === 'success'}
-        >
+          <button
+            type="submit"
+            className={`${styles.submitBtn} ${submitStatus === 'submitting' ? styles.loading : ''}`}
+            disabled={submitStatus === 'submitting' || submitStatus === 'success'}
+            aria-busy={submitStatus === 'submitting'}
+          >
           {submitStatus === 'submitting' && (
             <>
-              <svg className={styles.spinner} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" strokeOpacity="0.25"/>
-                <path d="M12 2a10 10 0 0 1 10 10" strokeLinecap="round"/>
-              </svg>
+                <svg className={styles.spinner} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
+                  <circle cx="12" cy="12" r="10" strokeOpacity="0.25"/>
+                  <path d="M12 2a10 10 0 0 1 10 10" strokeLinecap="round"/>
+                </svg>
               <span>Processando...</span>
             </>
           )}
           {submitStatus === 'success' ? (
             <>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
                 <polyline points="20 6 9 17 4 12"/>
               </svg>
               <span>Solicitação enviada!</span>
@@ -186,7 +191,7 @@ export function PurchaseForm({
       </div>
 
       <p className={styles.disclaimer}>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
         </svg>
         <span>Simulação de interesse — nenhum pagamento será processado. Seus dados são usados apenas para contato comercial.</span>

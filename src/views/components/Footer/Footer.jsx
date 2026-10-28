@@ -2,11 +2,11 @@ import styles from './Footer.module.css';
 
 const socialIcons = {
   instagram: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-    </svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
   ),
   linkedin: (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -36,8 +36,8 @@ export function Footer({ footer }) {
       <div className={styles.container}>
         <div className={styles.grid}>
           <div className={styles.brand}>
-            <a href="#hero" className={styles.logo} aria-label="Lumina - Início">
-              <svg className={styles.logoIcon} viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <a href="#hero" className={styles.logo} aria-label="Lumina - Ir para início">
+              <svg className={styles.logoIcon} viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false">
                 <circle cx="16" cy="16" r="14" stroke="currentColor" strokeWidth="2"/>
                 <path d="M16 6v20M6 16h20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                 <circle cx="16" cy="16" r="6" fill="currentColor"/>
@@ -47,14 +47,13 @@ export function Footer({ footer }) {
             <p className={styles.tagline}>{footer.tagline}</p>
             <p className={styles.description}>{footer.description}</p>
 
-            <div className={styles.social} role="list" aria-label="Redes sociais">
+            <div className={styles.social} aria-label="Redes sociais">
               {footer.social.map(item => (
                 <a
                   key={item.name}
                   href={item.url}
                   className={styles.socialLink}
-                  aria-label={item.name}
-                  role="listitem"
+                  aria-label={`Lumina no ${item.name}`}
                 >
                   {socialIcons[item.icon]}
                 </a>
@@ -65,7 +64,7 @@ export function Footer({ footer }) {
           <nav className={styles.nav} aria-label="Navegação do rodapé">
             {Object.entries(footer.navigation).map(([category, links]) => (
               <div key={category} className={styles.navColumn}>
-                <h4 className={styles.navTitle}>{category.charAt(0).toUpperCase() + category.slice(1)}</h4>
+                <h3 className={styles.navTitle}>{category.charAt(0).toUpperCase() + category.slice(1)}</h3>
                 <ul className={styles.navList}>
                   {links.map((link, index) => (
                     <li key={index}>

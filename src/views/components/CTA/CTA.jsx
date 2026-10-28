@@ -14,17 +14,19 @@ export function CTA({ cta, onPrimaryCTA, onSecondaryCTA }) {
 
           <div className={styles.ctaGroup}>
             <button
-              className={styles.ctaPrimary}
+              className={styles.primaryButton}
               onClick={onPrimaryCTA}
-              aria-label={cta.primaryCTA}
+              type="button"
+              aria-label={cta.primaryButton}
             >
               {cta.primaryCTA}
             </button>
 
             <button
-              className={styles.ctaSecondary}
+              className={styles.secondaryButton}
               onClick={onSecondaryCTA}
-              aria-label={cta.secondaryCTA}
+              type="button"
+              aria-label={cta.secondaryButton}
             >
               {cta.secondaryCTA}
             </button>

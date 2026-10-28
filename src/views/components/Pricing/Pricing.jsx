@@ -40,9 +40,9 @@ export function Pricing({ plans, onSelectPlan, formatPrice }) {
               <ul className={styles.features} aria-label={`${plan.name} features`}>
                 {plan.features.map((feature, index) => (
                   <li key={index} className={styles.feature}>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <polyline points="20 6 9 17 4 12"/>
-                    </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
                     {feature}
                   </li>
                 ))}
@@ -50,6 +50,7 @@ export function Pricing({ plans, onSelectPlan, formatPrice }) {
               <button
                 className={`${styles.cta} ${plan.popular ? styles.ctaPrimary : styles.ctaSecondary}`}
                 onClick={() => onSelectPlan(plan.id)}
+                type="button"
                 aria-label={`${plan.cta} - ${plan.name}`}
               >
                 {plan.cta}
@@ -59,7 +60,7 @@ export function Pricing({ plans, onSelectPlan, formatPrice }) {
         </div>
 
         <div className={styles.guarantee}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
           </svg>
           <div>

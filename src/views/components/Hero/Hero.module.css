@@ -138,18 +138,25 @@
 }
 
 .ctaPrimary {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-3);
+  gap: var(--spacing-2);
   padding: var(--spacing-4) var(--spacing-8);
-  background: var(--color-accent);
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
   color: var(--color-text-inverse);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
   border-radius: var(--radius-full);
-  min-width: 220px;
-  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: var(--shadow-glow);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  flex: 1;
+  min-width: 200px;
+}
+
+.ctaPrimary:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
 }
 
 .ctaPrimary:hover {
@@ -177,9 +184,13 @@
 }
 
 .ctaSecondary:hover {
-  color: var(--color-text-primary);
-  border-color: var(--color-border-light);
   background: var(--color-background-hover);
+  border-color: var(--color-border-light);
+}
+
+.ctaSecondary:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
 }
 
 .trustIndicators {

@@ -127,6 +127,11 @@
   transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
+.ctaPrimary:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
 .ctaPrimary:hover {
   background: var(--color-accent-light);
   transform: translateY(-1px);
@@ -272,6 +277,11 @@
   background: var(--color-accent-light);
   transform: scale(1.02);
   box-shadow: var(--shadow-glow);
+}
+
+.mobileCTAPrimary:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
 }
 
 @media (min-width: 768px) {

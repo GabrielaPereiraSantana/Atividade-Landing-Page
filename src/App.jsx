@@ -66,7 +66,7 @@ function App() {
         activeSection={activeSection}
       />
 
-      <main>
+      <main id="main-content">
         <Hero
           hero={product.hero}
           onPrimaryCTA={handlePrimaryCTA}

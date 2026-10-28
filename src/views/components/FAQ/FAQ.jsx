@@ -19,17 +19,19 @@ export function FAQ({ faqItems, isExpanded, toggleItem, handleKeyDown }) {
               className={`${styles.item} ${isExpanded(item.id) ? styles.open : ''}`}
               role="listitem"
             >
-              <button
-                className={styles.trigger}
-                onClick={() => toggleItem(item.id)}
-                onKeyDown={(e) => handleKeyDown(e, item.id)}
-                aria-expanded={isExpanded(item.id)}
-                aria-controls={`faq-answer-${item.id}`}
-                id={`faq-question-${item.id}`}
-              >
+                <button
+                  className={styles.faqButton}
+                  type="button"
+                  onClick={() => toggleItem(item.id)}
+                  onKeyDown={(e) => handleKeyDown(e, index)}
+                  aria-expanded={isExpanded(item.id)}
+                  aria-controls={`faq-panel-${item.id}`}
+                  id={`faq-button-${item.id}`}
+                  aria-label={`${isExpanded(item.id) ? 'Recolher' : 'Expandir'} pergunta: ${item.question}`}
+                >
                 <span className={styles.question}>{item.question}</span>
                 <span className={styles.icon} aria-hidden="true">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" focusable="false">
                     <polyline points="6 9 12 15 18 9"/>
                   </svg>
                 </span>

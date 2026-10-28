@@ -21,8 +21,8 @@ export function Header({ navigationItems, onNavigate, onCTAClick, activeSection 
   return (
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`} role="banner">
       <div className={styles.container}>
-        <a href="#hero" className={styles.logo} aria-label="Lumina - Início">
-          <svg className={styles.logoIcon} viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <a href="#hero" className={styles.logo} aria-label="Lumina - Ir para início">
+          <svg className={styles.logoIcon} viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false">
             <circle cx="16" cy="16" r="14" stroke="currentColor" strokeWidth="2"/>
             <path d="M16 6v20M6 16h20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
             <circle cx="16" cy="16" r="6" fill="currentColor"/>
@@ -57,12 +57,14 @@ export function Header({ navigationItems, onNavigate, onCTAClick, activeSection 
               e.preventDefault();
               handleNavClick('#pricing');
             }}
+            aria-label="Ver planos"
           >
             Planos
           </a>
           <button
             className={styles.ctaPrimary}
             onClick={onCTAClick}
+            type="button"
             aria-label="Começar minha jornada Lumina"
           >
             Começar
@@ -113,9 +115,9 @@ export function Header({ navigationItems, onNavigate, onCTAClick, activeSection 
             </a>
           </li>
           <li>
-            <button className={styles.mobileCTAPrimary} onClick={onCTAClick}>
-              Começar minha jornada
-            </button>
+          <button className={styles.mobileCTAPrimary} type="button" onClick={onCTAClick}>
+            Começar minha jornada
+          </button>
           </li>
         </ul>
       </div>
