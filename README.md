@@ -36,9 +36,34 @@ A identidade visual foi pensada para transmitir modernidade, conforto e tecnolog
 - **CSS Modules:** organização e modularização dos estilos.
 - **Vite:** ambiente de desenvolvimento e execução da aplicação.
 - **Visual Studio Code:** edição e organização dos arquivos.
-- **OpenCode:** apoio à implementação e à revisão do código a partir de instruções.
+- **OpenCode:** apoio à implementação, à validação e à revisão do código a partir de instruções.
 - **Git e GitHub:** controle de versão e disponibilização do projeto em um repositório público.
-- **Accessibility Scanner MCP:** apoio à auditoria automatizada de acessibilidade da landing page durante a Atividade 02.
+- **Accessibility Scanner MCP:** apoio à auditoria automatizada de acessibilidade durante a Atividade 02.
+- **Playwright:** testes automatizados de ponta a ponta (end-to-end) durante a Atividade 03.
+
+## Estrutura do projeto (arquitetura MVVM)
+
+```text
+src/
+  models/          dados do produto (productModel.js)
+  viewmodels/      lógica de cada tela (FAQ, produto, compra e favoritos)
+  views/components/  componentes visuais (Header, Hero, Pricing, FAQ etc.)
+  styles/          estilos globais e variáveis
+tests/
+  favoritos.spec.js  testes do Playwright
+playwright.config.js
+playwright-report-ok/      relatório da execução normal
+playwright-report-falha/   relatório da execução com falha intencional
+```
+
+## Como executar o projeto
+
+```bash
+npm install
+npm run dev
+```
+
+A aplicação abre em `http://127.0.0.1:5173`.
 
 ## Uso de inteligência artificial
 
@@ -48,9 +73,11 @@ As instruções estabeleceram o uso de React, JavaScript, CSS Modules e arquitet
 
 A IA foi utilizada como apoio à estruturação dos componentes, à organização dos estilos e à implementação das interações no front-end. As sugestões foram orientadas pelos requisitos acadêmicos, pela clareza do código, pela experiência de navegação e pela coerência visual do produto.
 
-O modelo específico de inteligência artificial utilizado pelo OpenCode depende da configuração selecionada durante o desenvolvimento.
+Na Atividade 03, o OpenCode (modelo GPT-5.3 Codex, conforme configuração da sessão) foi usado para validar a funcionalidade com o Playwright, revisar os testes, introduzir a falha intencional, executar os testes e reverter a alteração. O modelo específico depende da configuração selecionada em cada sessão.
 
-## Evolução da solução — Atividade 02
+---
+
+## Evolução da solução — Atividade 02 (Acessibilidade)
 
 Na segunda atividade, a landing page foi revisada com foco em **acessibilidade digital**. O objetivo foi identificar problemas técnicos, implementar melhorias justificadas e validar as alterações com apoio de um servidor MCP (*Model Context Protocol*).
 
@@ -98,7 +125,7 @@ As principais mudanças registradas foram:
 - **Preferências de movimento:** implementação de suporte à configuração `prefers-reduced-motion`, respeitando usuários que preferem reduzir animações.
 - **Metadados e idioma:** definição do idioma da página como `pt-BR` e ajustes no título e na descrição.
 
-Essas alterações são relevantes porque podem tornar a navegação mais compreensível e previsível para diferentes usuários, além de contribuir para a manutenção e a qualidade geral da interface. Algumas melhorias atuam principalmente no comportamento com teclado e na interpretação por tecnologias assistivas, sem alterar significativamente a aparência normal da página.
+Essas alterações tornam a navegação mais compreensível e previsível para diferentes usuários, além de contribuir para a manutenção e a qualidade geral da interface. Algumas melhorias atuam principalmente no comportamento com teclado e na interpretação por tecnologias assistivas, sem alterar significativamente a aparência normal da página.
 
 ### 4. Utilização do MCP e avaliação dos resultados
 
@@ -107,7 +134,7 @@ A utilização do MCP ocorreu em um ciclo de análise e melhoria:
 1. **Auditoria inicial:** a página foi analisada com a ferramenta `scan_accessibility`.
 2. **Interpretação dos resultados:** os problemas apontados foram revisados para identificar quais partes do código precisavam de ajustes.
 3. **Implementação:** foram realizadas alterações no HTML, nos componentes React e nos estilos CSS.
-4. **Nova análise:** a página foi verificada novamente para comparar os resultados registrados antes e depois das mudanças.
+4. **Nova análise:** a página foi verificada novamente para comparar os resultados antes e depois das mudanças.
 5. **Validação da compilação:** foi executado o comando `npm run build`, que foi concluído com sucesso.
 
 De acordo com o relatório gerado durante o desenvolvimento, a pontuação passou de **82 para 88 pontos**, e os problemas relacionados ao critério *bypass blocks* foram corrigidos.
@@ -125,20 +152,122 @@ Os resultados indicam uma evolução nas verificações realizadas, mas a pontua
 
 ### 5. Limitações e evidências
 
-O Accessibility Scanner MCP contribuiu ao fornecer evidências dos problemas encontrados e permitir uma comparação entre as análises inicial e posterior. Entretanto, verificações automatizadas não conseguem avaliar completamente a clareza do conteúdo, a experiência real de navegação ou todos os comportamentos de componentes interativos.
+Verificações automatizadas não conseguem avaliar completamente a clareza do conteúdo, a experiência real de navegação ou todos os comportamentos de componentes interativos. Por isso, a validação deve ser complementada com testes manuais (navegação por teclado, modal, formulários, hierarquia de títulos, contraste contextual e leitores de tela).
 
-Por isso, a validação deve ser complementada com testes manuais, incluindo:
+Os arquivos das auditorias estão na raiz do repositório: `audit-initial-static-dev.json`, `audit-initial-static-dist.json`, `audit-post-static-dev.json` e `audit-post-static-dist.json`.
 
-- Navegação completa utilizando apenas o teclado;
-- Verificação do funcionamento e do foco do modal;
-- Testes dos formulários e de suas mensagens de erro;
-- Revisão da hierarquia de títulos e das regiões de status;
-- Avaliação do contraste em situações contextuais, como textos sobre imagens e gradientes;
-- Quando possível, testes com leitores de tela.
+---
 
-Para fortalecer a apresentação da atividade, recomenda-se incluir capturas de tela dos resultados inicial e final, exemplos do código antes e depois das alterações e os arquivos JSON das auditorias, caso estejam disponíveis no projeto. Os nomes de arquivos mencionados no relatório — `audit-initial-static-dev.json`, `audit-initial-static-dist.json`, `audit-post-static-dev.json` e `audit-post-static-dist.json` — devem ser anexados ou referenciados somente se realmente existirem no projeto.
+## Evolução da solução — Atividade 03 (Favoritos + testes com Playwright)
 
-### Conclusão da atividade
+Na terceira atividade, a landing page recebeu uma nova funcionalidade, validada com testes automatizados de ponta a ponta usando o **Playwright** com apoio de inteligência artificial (OpenCode).
 
-A utilização do Accessibility Scanner MCP contribuiu para tornar o desenvolvimento da landing page Lumora mais orientado por evidências. A ferramenta ajudou a identificar problemas de acessibilidade, direcionar melhorias e verificar parte dos resultados após as alterações. A atividade demonstrou a aplicação prática de uma ferramenta integrada ao desenvolvimento e a importância de combinar auditorias automatizadas com testes manuais para obter uma avaliação mais completa da qualidade e da acessibilidade da interface.
+### 1. Funcionalidade escolhida: Favoritos nos planos
 
+O visitante pode **favoritar os planos** (Lumina Essencial, Lumina Pro e Lumina Studio) para compará-los depois. A funcionalidade é relevante para a landing page porque o visitante precisa decidir entre três planos de preços diferentes, e marcar favoritos ajuda nessa decisão.
+
+**Como funciona:**
+
+- Cada card de plano tem um botão "♡ Favoritar".
+- Ao clicar, o botão passa a mostrar "♥ Favoritado" e o plano fica marcado.
+- Ao clicar de novo, o favorito é removido.
+- O cabeçalho mostra um contador ("♥ N") com a quantidade de planos favoritos.
+- Os favoritos são guardados no `localStorage` e continuam após recarregar a página.
+
+**Arquivos criados ou alterados:**
+
+| Arquivo | Alteração |
+|---|---|
+| `src/viewmodels/useFavoritesViewModel.js` | novo: lógica dos favoritos (adicionar, remover, salvar) |
+| `src/App.jsx` | usa o novo viewmodel e passa as props ao Header e ao Pricing |
+| `src/views/components/Header/Header.jsx` e `.module.css` | contador de favoritos |
+| `src/views/components/Pricing/Pricing.jsx` e `.module.css` | botão de favoritar em cada plano |
+
+### 2. Especificação (prompt em linguagem natural)
+
+```text
+Adicione à landing page a funcionalidade de favoritar planos. Cada card de plano deve ter um botão "Favoritar". Ao clicar, o botão passa a mostrar "Favoritado" e o plano é marcado como favorito. Ao clicar de novo, o favorito é removido. O Header deve mostrar um contador com o número de planos favoritos, começando em 0. Os planos devem ser independentes entre si. Os favoritos devem continuar após recarregar a página.
+```
+
+### 3. Validação inicial com Playwright
+
+Com a funcionalidade implementada, foi solicitado ao OpenCode que usasse o Playwright para verificar se ela atendia ao comportamento especificado. A implementação estava de acordo com a especificação.
+
+### 4. Testes automatizados criados
+
+Os testes ficam em `tests/favoritos.spec.js`, e a configuração está em `playwright.config.js` (o Playwright sobe o servidor do Vite sozinho).
+
+| # | Teste | Comportamento validado |
+|---|---|---|
+| 1 | começa com zero favoritos | contador em 0 e botões não marcados |
+| 2 | favoritar um plano atualiza o botão e o contador | botão vira "Favoritado" e contador vai para 1 |
+| 3 | clicar de novo remove o plano dos favoritos | botão e contador voltam ao estado inicial |
+| 4 | favoritar vários planos funciona de forma independente | favoritar 2 planos e remover 1 mantém o outro marcado |
+| 5 | favoritos continuam depois de recarregar a página | persistência via `localStorage` |
+
+### 5. Teste de falha (alteração intencional)
+
+Para demonstrar que os testes identificam problemas reais, a implementação foi alterada de propósito.
+
+- **Arquivo:** `src/viewmodels/useFavoritesViewModel.js`
+- **Código original:**
+
+```js
+setFavorites(favorites.filter((id) => id !== planId));
+```
+
+- **Código com a falha:**
+
+```js
+setFavorites([...favorites]);
+```
+
+Com essa mudança, **desfavoritar deixa de funcionar**: o plano continua marcado e o contador não diminui.
+
+### 6. Resultados das execuções
+
+| Execução | Aprovados | Reprovados | Observação |
+|---|---|---|---|
+| Implementação correta | 5 | 0 | todos os comportamentos validados (`playwright-report-ok`) |
+| Com a alteração intencional | 3 | 2 | falharam os testes 3 e 4 (`playwright-report-falha`) |
+| Após reverter a alteração | 5 | 0 | testes voltaram a passar |
+
+**Testes que identificaram o problema:**
+
+- **"clicar de novo remove o plano dos favoritos":** depois de clicar para desfavoritar, o plano continuou favorito e o botão "Favoritar" não voltou a aparecer.
+- **"favoritar vários planos funciona de forma independente":** ao remover um dos favoritos, o contador deveria ir para `♥ 1`, mas permaneceu em `♥ 2`.
+
+Os testes 1, 2 e 5 continuaram passando, porque a falha atinge apenas a remoção de favoritos. Isso mostra que cada teste verifica um comportamento específico.
+
+### 7. Como executar os testes
+
+```bash
+npm install
+npx playwright install
+npx playwright test
+```
+
+Para abrir os relatórios:
+
+```bash
+npx playwright show-report playwright-report-ok
+npx playwright show-report playwright-report-falha
+```
+
+### 8. Arquivos da entrega (Moodle)
+
+- **Repositório GitHub:** código atualizado e testes do Playwright (`tests/` e `playwright.config.js`).
+- **Export da sessão:** arquivo gerado com `/export` no OpenCode (`export-sessao.md`), documentando o prompt, as validações, os testes, as alterações e os resultados.
+- **Relatórios do Playwright:** pastas `playwright-report-ok` e `playwright-report-falha`, esta última com a execução após a alteração intencional.
+
+---
+
+## Conclusão
+
+A landing page do Lumina evoluiu em etapas: primeiro a construção do produto e da identidade visual, depois a acessibilidade, com apoio do Accessibility Scanner MCP, e por fim uma nova funcionalidade validada com testes automatizados.
+
+Na Atividade 03, o Playwright mostrou que um teste útil não serve apenas para passar: ele precisa falhar quando o comportamento deixa de atender ao que foi especificado. Ao quebrar a função de remover favoritos de propósito, os testes corretos reprovaram, e ao reverter a alteração voltaram a passar. A combinação de auditorias automatizadas, testes de ponta a ponta e testes manuais oferece uma visão mais completa da qualidade da interface.
+
+## Repositório
+
+https://github.com/GabrielaPereiraSantana/Atividade-Landing-Page.git
