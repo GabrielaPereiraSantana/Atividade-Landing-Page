@@ -254,13 +254,6 @@ npx playwright show-report playwright-report-ok
 npx playwright show-report playwright-report-falha
 ```
 
-### 8. Arquivos da entrega (Moodle)
-
-- **Repositório GitHub:** código atualizado e testes do Playwright (`tests/` e `playwright.config.js`).
-- **Export da sessão:** arquivo gerado com `/export` no OpenCode (`export-sessao.md`), documentando o prompt, as validações, os testes, as alterações e os resultados.
-- **Relatórios do Playwright:** pastas `playwright-report-ok` e `playwright-report-falha`, esta última com a execução após a alteração intencional.
-
----
 
 ## Conclusão
 
