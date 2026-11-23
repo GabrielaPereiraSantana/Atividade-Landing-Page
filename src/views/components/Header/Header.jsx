@@ -1,6 +1,6 @@
 import styles from './Header.module.css';
 
-export function Header({ navigationItems, onNavigate, onCTAClick, activeSection }) {
+export function Header({ navigationItems, onNavigate, onCTAClick, activeSection, favoritesCount }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -50,6 +50,9 @@ export function Header({ navigationItems, onNavigate, onCTAClick, activeSection 
         </nav>
 
         <div className={styles.actions}>
+          <span className={styles.favorites} data-testid="contador-favoritos" aria-label={`Planos favoritos: ${favoritesCount}`}>
+            ♥ {favoritesCount}
+          </span>
           <a
             href="#pricing"
             className={styles.ctaSecondary}

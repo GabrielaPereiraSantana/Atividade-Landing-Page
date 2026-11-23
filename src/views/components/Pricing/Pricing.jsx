@@ -1,6 +1,6 @@
 import styles from './Pricing.module.css';
 
-export function Pricing({ plans, onSelectPlan, formatPrice }) {
+export function Pricing({ plans, onSelectPlan, formatPrice, isFavorite, onToggleFavorite }) {
   return (
     <section id="pricing" className={styles.section} aria-labelledby="pricing-title">
       <div className={styles.container}>
@@ -47,6 +47,15 @@ export function Pricing({ plans, onSelectPlan, formatPrice }) {
                   </li>
                 ))}
               </ul>
+              <button
+                className={styles.favoriteBtn}
+                onClick={() => onToggleFavorite(plan.id)}
+                type="button"
+                aria-pressed={isFavorite(plan.id)}
+                aria-label={isFavorite(plan.id) ? `Remover ${plan.name} dos favoritos` : `Favoritar ${plan.name}`}
+              >
+                {isFavorite(plan.id) ? '♥ Favoritado' : '♡ Favoritar'}
+              </button>
               <button
                 className={`${styles.cta} ${plan.popular ? styles.ctaPrimary : styles.ctaSecondary}`}
                 onClick={() => onSelectPlan(plan.id)}

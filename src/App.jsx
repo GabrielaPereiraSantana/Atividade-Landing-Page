@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 import { useProductViewModel } from './viewmodels/useProductViewModel';
 import { useFAQViewModel } from './viewmodels/useFAQViewModel';
 import { usePurchaseViewModel } from './viewmodels/usePurchaseViewModel';
+import { useFavoritesViewModel } from './viewmodels/useFavoritesViewModel';
 
 import Header from './views/components/Header/Header';
 import Hero from './views/components/Hero/Hero';
@@ -45,6 +46,8 @@ function App() {
     formatPrice
   } = usePurchaseViewModel();
 
+  const { favorites, toggleFavorite, isFavorite } = useFavoritesViewModel();
+
   const handlePrimaryCTA = useCallback(() => {
     openModal();
   }, [openModal]);
@@ -64,6 +67,7 @@ function App() {
         onNavigate={handleNavigation}
         onCTAClick={handlePrimaryCTA}
         activeSection={activeSection}
+        favoritesCount={favorites.length}
       />
 
       <main id="main-content">
@@ -89,6 +93,8 @@ function App() {
           plans={product.pricing.plans}
           onSelectPlan={handlePricingSelect}
           formatPrice={formatPrice}
+          isFavorite={isFavorite}
+          onToggleFavorite={toggleFavorite}
         />
 
         <FAQ
